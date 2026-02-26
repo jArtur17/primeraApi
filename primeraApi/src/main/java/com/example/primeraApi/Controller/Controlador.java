@@ -1,24 +1,18 @@
 package com.example.primeraApi.Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/saludos")
+@Controller
 public class Controlador {
 
+    @GetMapping("/detalles_info")
 
-    @GetMapping("/hola")
-    public String holaxd(){
-        return "Holas";
-    }
-
-    @GetMapping("/holanombre/{nombre}/{edad}")
-    public String holaNombre(@PathVariable String nombre,
-                             @PathVariable int edad){
-        return "Holas " + nombre + " tu edad es: " + edad;
-
+    public String Info(Model model) {
+        model.addAttribute("Titulo", "Servidor en linea");
+        model.addAttribute("Servidor", "Artur");
+        model.addAttribute("Ip", "123");
+        return "detalles_info";
     }
 }
