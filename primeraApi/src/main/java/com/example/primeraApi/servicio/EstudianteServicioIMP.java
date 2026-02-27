@@ -17,4 +17,9 @@ public class EstudianteServicioIMP implements EstudianteServicio{
     public List<Estudiante> listar_Allstudents() {
         return repositorio.findAll();
     }
+
+    @Override
+    public Estudiante guardarEstudiante(Estudiante estudiante){
+        return repositorio.save(estudiante);
+    }
 }

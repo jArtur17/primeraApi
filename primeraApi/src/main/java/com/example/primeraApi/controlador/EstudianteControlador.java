@@ -6,6 +6,8 @@ import com.example.primeraApi.servicio.EstudianteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -22,5 +24,19 @@ public class EstudianteControlador {
         model.addAttribute("estudiantes", servicio.listar_Allstudents());
         return "estudiantes"; //nos retorna el archivo estudiantes
     }
+
+    @GetMapping("/estudiantes/nuevo")
+    public String mostrarFormularioRegistro(Model model){
+        Estudiante estudiante = new Estudiante();
+        model.addAttribute("estudiante", estudiante);
+        return "crear_estudiante";
+    }
+
+    @PostMapping("/estudiantes")
+    public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante){
+        servicio.guardarEstudiante(estudiante);
+        return "redirect:/estudiantes";
+    }
+
 
 }
