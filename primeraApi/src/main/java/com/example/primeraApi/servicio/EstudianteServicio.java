@@ -10,5 +10,11 @@ public interface EstudianteServicio {
 
     public Estudiante guardarEstudiante(Estudiante estudiante);
 
+    public Estudiante obtenerEstudiantexId(Long id);
+
+    public Estudiante actualizarEstudiante(Estudiante estudiante);
+
+    public void eliminarEstudiante(Long id);
+
 
 }
